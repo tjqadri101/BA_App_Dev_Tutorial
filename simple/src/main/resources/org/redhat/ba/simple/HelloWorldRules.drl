@@ -1,0 +1,16 @@
+//created on: Aug 25, 2015
+package org.redhat.ba.simple
+
+import org.redhat.ba.Greeting
+
+rule "NoGreeting"
+
+    when
+        //conditions
+        greeting : Greeting(greeting == null)
+    then
+        //actions
+        modify(greeting) {setGreeting("Hello World!")};
+        System.out.println("fired rule " + kcontext.getRule().getName());
+
+end
